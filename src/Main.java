@@ -55,6 +55,16 @@ public class Main {
       String usernameRegister = input.next();
       System.out.print("Password: ");
       String passwordRegister = input.next();
+
+      // Register validation to check if username exists
+      for (User user : users) {
+        if (user.getUsername().equals(usernameRegister)) {
+          System.out.println("\nUsername not available\n");
+          register();
+          break;
+        }
+      }
+
       users.add(new User(usernameRegister, passwordRegister));
       System.out.println("\nRegistered successfully! Login now to start bidding/auctioning today!");
 
