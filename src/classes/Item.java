@@ -66,6 +66,11 @@ public class Item {
     auctionBidHistory.add(history);
   }
 
+  public void declareBidderWinner() {
+    String history = "The winner of the bid is " + highestBidder + " with " + this.price;
+    auctionBidHistory.add(history);
+  }
+
   public void getItemHistory() {
     for (int x = 0; x < auctionBidHistory.size(); x++) {
       System.out.println(auctionBidHistory.get(x));
