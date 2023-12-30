@@ -223,6 +223,8 @@ public class Main {
 
           System.out.print("Select item to manage: ");
           select = input.nextInt();
+          System.out.println(" ");
+          manageAuctionedItems(select);
 
           // Forbid user from managing others item
           if (!items.get(select).getSellerName().equals(currentUser)) {
@@ -294,6 +296,37 @@ public class Main {
       }
       input.close();
     }
+
+    static void manageAuctionedItems(int itemID) {
+      Scanner input = new Scanner(System.in);
+      int choice;
+      items.get(itemID).getInfo(items);
+
+      System.out.println("1. Mark as sold");
+      System.out.println("2. Remove item");
+      System.out.println("3. See item history");
+      System.out.println("4. Go back");
+      System.out.println(" ");
+      System.out.print("Choice: ");
+      choice = input.nextInt();
+
+      if (choice == 1) {
+        items.get(itemID).markAsSold();
+        System.out.println("Item has been marked as sold!");
+        System.out.println("The winner of the bid is " + items.get(itemID).getHighestBidderName());
+      } else if (choice == 2) {
+        items.remove(itemID);
+        System.out.println("Removed item successfully!");
+      } else if (choice == 3) {
+        System.out.println("\n");
+        items.get(itemID).getItemHistory();
+      } else {
+        auctionBiddingMenu();
+      }
+
+      input.close();
+    }
+
   }
 
   public static void main(String[] args) {

@@ -44,6 +44,10 @@ public class Item {
     return this.sellerName;
   }
 
+  public String getHighestBidderName() {
+    return this.highestBidder;
+  }
+
   public void setHighestBidder(String bidder) {
     this.highestBidder = bidder;
   }
@@ -66,5 +70,9 @@ public class Item {
     for (int x = 0; x < auctionBidHistory.size(); x++) {
       System.out.println(auctionBidHistory.get(x));
     }
+  }
+
+  public void markAsSold() {
+    this.itemStatus = "not available";
   }
 }
