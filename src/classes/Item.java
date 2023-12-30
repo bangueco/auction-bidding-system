@@ -3,6 +3,7 @@ package classes;
 import java.util.ArrayList;
 
 public class Item {
+  private ArrayList<String> auctionBidHistory = new ArrayList<String>();
   private String itemName;
   private String itemQuantity;
   private String price;
@@ -17,6 +18,8 @@ public class Item {
     this.itemStatus = status;
     this.sellerName = sellerName;
     this.highestBidder = highestBidder;
+
+    addAuctionHistory(sellerName);
   }
 
   public String getInfo(ArrayList<Item> items) {
@@ -47,5 +50,21 @@ public class Item {
 
   private int getCurrentIndex(ArrayList<Item> items) {
     return items.indexOf(this);
+  }
+
+  private void addAuctionHistory(String user) {
+    String history = user + " has auctioned " + itemName;
+    auctionBidHistory.add(history);
+  }
+
+  public void addBiddingHistory(String user) {
+    String history = "User " + user + " has bid " + this.price + " to this item";
+    auctionBidHistory.add(history);
+  }
+
+  public void getItemHistory() {
+    for (int x = 0; x < auctionBidHistory.size(); x++) {
+      System.out.println(auctionBidHistory.get(x));
+    }
   }
 }

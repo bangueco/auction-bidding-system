@@ -178,7 +178,7 @@ public class Main {
         System.out.println("2. Bid item");
         System.out.println("3. Display items being auctioned");
         System.out.println("4. Manage your auctioned items");
-        System.out.println("5. Exit");
+        System.out.println("5. Logout");
         System.out.println("======================================");
         System.out.print("Choice: ");
         choice = input.nextInt();
@@ -214,11 +214,25 @@ public class Main {
           }
           break;
         } else if (choice == 4) {
+          int select;
           for (Item item : items) {
             if (item.getSellerName().equals(currentUser)) {
               System.out.println(item.getInfo(items));
             }
           }
+
+          System.out.print("Select item to manage: ");
+          select = input.nextInt();
+
+          // Forbid user from managing others item
+          if (!items.get(select).getSellerName().equals(currentUser)) {
+            System.out.println("\nItem not found!\n");
+            auctionBiddingMenu();
+          }
+          break;
+        } else {
+          currentUser = "";
+          startMenu();
           break;
         }
       }
@@ -274,6 +288,7 @@ public class Main {
       } else {
         items.get(select).setPrice(String.valueOf(bidAmount));
         items.get(select).setHighestBidder(currentUser);
+        items.get(select).addBiddingHistory(currentUser);
         System.out.println("Bid placed successfully!");
         auctionBiddingMenu();
       }
@@ -288,7 +303,7 @@ public class Main {
 
     // Add default items
     items.add(new Item("buko juice", "20", "500", "available", "ban", "none"));
-    items.add(new Item("buko juice", "200", "1500", "available", "kibo", "none"));
+    items.add(new Item("buko juicx", "200", "1500", "available", "kibo", "none"));
     Menu.startMenu();
   }
 }
