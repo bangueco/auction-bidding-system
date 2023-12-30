@@ -322,11 +322,7 @@ public class Main {
 
       if (choice == 1) {
         items.get(itemID).markAsSold();
-        System.out.println("Item has been marked as sold!");
-        System.out.println("The winner of the bid is " + items.get(itemID).getHighestBidderName() + "\n");
-        System.out.println("======================================");
-        System.out.println("\tBidding History for Item No. " + itemID);
-        System.out.println("======================================");
+        System.out.println("\nItem has been marked as sold!");
         items.get(itemID).declareBidderWinner();
         items.get(itemID).getItemHistory();
       } else if (choice == 2) {
@@ -334,7 +330,6 @@ public class Main {
         System.out.println("Removed item successfully!");
         auctionBiddingMenu();
       } else if (choice == 3) {
-        System.out.println("\n");
         items.get(itemID).getItemHistory();
         auctionBiddingMenu();
       } else {

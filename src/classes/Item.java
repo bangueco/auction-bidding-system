@@ -72,9 +72,13 @@ public class Item {
   }
 
   public void getItemHistory() {
+    System.out.println("\n======================================");
+    System.out.println("\tBidding History");
+    System.out.println("======================================");
     for (int x = 0; x < auctionBidHistory.size(); x++) {
       System.out.println(auctionBidHistory.get(x));
     }
+    System.out.println("======================================\n");
   }
 
   public void markAsSold() {
